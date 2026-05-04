@@ -40,7 +40,7 @@ exports.handler = async (event, context) => {
       payment_method_types: ['card', 'cashapp', 'amazon_pay'],
       line_items,
       mode: 'payment',
-      success_url: `${process.env.URL}/success`,
+      success_url: `${process.env.URL}/success?type=${deliveryType}&phone=${phone}`,
       cancel_url: `${process.env.URL}/preorder`,
       metadata: {
         phone,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { CheckCircle, MapPin, Clock, Send } from 'lucide-react';
 import './Success.css';
@@ -8,7 +8,9 @@ const Success = () => {
   const queryParams = new URLSearchParams(location.search);
   const type = queryParams.get('type');
   const phone = queryParams.get('phone');
+  const method = queryParams.get('method') || 'stripe';
   
+  const hasNotified = useRef(false);
   const [selectedSlot, setSelectedSlot] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -16,6 +18,37 @@ const Success = () => {
   const slots = [
     '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM'
   ];
+
+  // Automatic notification on load
+  useEffect(() => {
+    if (hasNotified.current) return;
+    hasNotified.current = true;
+
+    const sendInitialNotification = async () => {
+      const formData = new FormData();
+      formData.append("access_key", "fe576714-9159-49d6-bd66-2f17492d35df");
+      formData.append("subject", `New Order Received! (${method === 'manual' ? 'CHECK/CASH' : 'STRIPE'})`);
+      formData.append("from_name", "Sugar Shell Website");
+      formData.append("message", `A new order has been placed on the website.
+      
+Payment Method: ${method === 'manual' ? 'Check/Cash (Pay at Pickup/Delivery)' : 'Paid via Stripe'}
+Delivery Type: ${type}
+Customer Phone: ${phone || 'Not provided'}
+
+Note: If this is a pickup order, the customer may still select a specific time slot below.`);
+
+      try {
+        await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData
+        });
+      } catch (error) {
+        console.error("Failed to send initial notification:", error);
+      }
+    };
+
+    sendInitialNotification();
+  }, [method, type, phone]);
 
   const handleConfirmSlot = async () => {
     if (!selectedSlot) return;
@@ -62,6 +95,24 @@ Delivery Type: ${type}`);
       <p style={{ fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto 2rem' }}>
         Thank you for your order! {isPickup ? "Since you're picking up, please see the details below." : "We'll be in contact with the drop-off details for your order soon."}
       </p>
+
+      {method === 'manual' && (
+        <div className="manual-payment-notice" style={{ 
+          backgroundColor: '#fff4e6', 
+          border: '1px solid #ffd8a8', 
+          padding: '1.5rem', 
+          borderRadius: '12px',
+          marginBottom: '2rem',
+          maxWidth: '600px',
+          margin: '0 auto 2rem'
+        }}>
+          <h3 style={{ color: '#d9480f', marginTop: 0 }}>Payment Required</h3>
+          <p style={{ marginBottom: 0 }}>
+            You selected <strong>Check or Cash</strong>. Please have your payment ready when you {isPickup ? 'arrive for pickup' : 'receive your delivery'}. 
+            {isPickup && " Alex will collect it then!"}
+          </p>
+        </div>
+      )}
 
       {isPickup && (
         <div className="pickup-info-container">

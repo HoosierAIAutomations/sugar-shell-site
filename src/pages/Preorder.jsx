@@ -11,7 +11,6 @@ const Preorder = ({ cart, updateQuantity, removeFromCart, orderingOpen, isOrderi
   const [deliveryFee, setDeliveryFee] = useState(0);
   const [zipMessage, setZipMessage] = useState('');
   const [phone, setPhone] = useState('');
-  const [paymentMethod, setPaymentMethod] = useState('card'); // 'card' or 'manual'
   const navigate = useNavigate();
 
   const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
@@ -36,12 +35,7 @@ const Preorder = ({ cart, updateQuantity, removeFromCart, orderingOpen, isOrderi
       return;
     }
     
-    if (paymentMethod === 'card') {
-      initiateCheckout(cart, phone, deliveryType, deliveryFee, isOrderingForNextWeek);
-    } else {
-      // Direct redirect for manual payments
-      navigate(`/success?type=${deliveryType}&phone=${phone}&method=manual`);
-    }
+    initiateCheckout(cart, phone, deliveryType, deliveryFee, isOrderingForNextWeek);
   };
 
   if (cart.length === 0) {
@@ -173,36 +167,7 @@ const Preorder = ({ cart, updateQuantity, removeFromCart, orderingOpen, isOrderi
               <p className="input-helper">We'll text you for pickup/delivery updates.</p>
             </div>
 
-            <div className="payment-method-section" style={{marginTop: '1.5rem', marginBottom: '1.5rem'}}>
-              <h3>Payment Method</h3>
-              <div className="delivery-toggle">
-                <label className={`radio-label ${paymentMethod === 'card' ? 'active' : ''}`}>
-                  <input 
-                    type="radio" 
-                    name="paymentMethod" 
-                    value="card" 
-                    checked={paymentMethod === 'card'} 
-                    onChange={() => setPaymentMethod('card')}
-                  />
-                  Credit/Debit Card
-                </label>
-                <label className={`radio-label ${paymentMethod === 'manual' ? 'active' : ''}`}>
-                  <input 
-                    type="radio" 
-                    name="paymentMethod" 
-                    value="manual" 
-                    checked={paymentMethod === 'manual'} 
-                    onChange={() => setPaymentMethod('manual')}
-                  />
-                  Check/Cash (Pay later)
-                </label>
-              </div>
-              <p className="input-helper">
-                {paymentMethod === 'card' 
-                  ? "Pay securely now via Stripe." 
-                  : "Pay via check or cash at pickup/delivery."}
-              </p>
-            </div>
+
 
             <div className="totals-box">
               <div className="total-line">
@@ -225,9 +190,7 @@ const Preorder = ({ cart, updateQuantity, removeFromCart, orderingOpen, isOrderi
               disabled={!orderingOpen || (deliveryType === 'delivery' && deliveryFee === 0) || !phone}
               onClick={handleCheckout}
             >
-              {orderingOpen 
-                ? (paymentMethod === 'card' ? 'Proceed to Payment' : 'Place Order') 
-                : 'Orders Closed'}
+              {orderingOpen ? 'Proceed to Payment' : 'Orders Closed'}
             </button>
             {deliveryType === 'delivery' && deliveryFee === 0 && orderingOpen && (
               <p className="checkout-warning">Please enter a valid delivery zip code or switch to Pickup.</p>

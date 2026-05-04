@@ -1,0 +1,149 @@
+.flavor-bubble-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem auto;
+  font-family: 'Outfit', sans-serif;
+  position: relative;
+}
+
+.flavor-bubble {
+  position: relative;
+  background-color: var(--olive-green);
+  color: var(--pure-white);
+  border: none;
+  border-radius: 50px;
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(87, 104, 76, 0.2);
+  transition: all 0.3s ease;
+}
+
+.flavor-bubble:hover {
+  transform: translateY(-5px);
+  background-color: var(--matcha-green);
+}
+
+.bubble-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bubble-text {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.flavor-form-card {
+  background-color: var(--surface);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  width: 320px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  position: relative;
+  border: 2px solid var(--golden-dough);
+}
+
+.close-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.close-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.flavor-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.flavor-form h3 {
+  color: var(--olive-green);
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.flavor-form p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+.flavor-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.flavor-form input,
+.flavor-form textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.6rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.flavor-form textarea {
+  resize: none;
+}
+
+.flavor-form input:focus,
+.flavor-form textarea:focus {
+  outline: none;
+  border-color: var(--olive-green);
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.success-message {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.success-message h3 {
+  color: var(--olive-green);
+  margin-bottom: 0.5rem;
+}
+
+@keyframes bounceSlight {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-bounce-slight {
+  animation: bounceSlight 3s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .flavor-bubble-container {
+    margin: 2rem auto;
+  }
+  
+  .flavor-bubble {
+    padding: 1rem 1.5rem;
+  }
+  
+  .bubble-text {
+    font-size: 0.9rem;
+  }
+}

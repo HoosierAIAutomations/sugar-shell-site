@@ -1,0 +1,155 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding-bottom: 4rem;
+}
+
+.hero {
+  min-height: 500px;
+  padding: 4rem 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--background);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.hero-logo {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.schedule-section {
+  margin-top: -4rem;
+  position: relative;
+  z-index: 10;
+}
+
+.schedule-card {
+  background-color: var(--surface);
+  border-radius: var(--border-radius);
+  padding: 3rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.schedule-card h2 {
+  color: var(--olive-green);
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.schedule-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .schedule-steps {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .step {
+    flex: 1;
+    padding: 0 1rem;
+  }
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  background-color: var(--golden-dough);
+  color: var(--deep-chocolate);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.step h3 {
+  margin-bottom: 0.5rem;
+  color: var(--caramel-brown);
+}
+
+.featured-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.featured-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .featured-item {
+    flex-direction: row;
+  }
+  .featured-item.image-left {
+    flex-direction: row-reverse;
+  }
+  .featured-item > * {
+    flex: 1;
+  }
+}
+
+.featured-text {
+  padding: 2rem;
+}
+
+.featured-text h2 {
+  font-size: 2.5rem;
+  color: var(--olive-green);
+  margin-bottom: 1rem;
+}
+
+.featured-image {
+  height: 400px;
+  width: 100%;
+  border-radius: var(--border-radius);
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.cookie-img {
+  background-image: url('../assets/products/classicchocolatechipcookies.png');
+}
+
+.brownie-img {
+  background-image: url('../assets/products/doublechocolatechipbrownies.png');
+}

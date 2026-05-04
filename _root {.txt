@@ -1,0 +1,8 @@
+:root {
+    --olive-green: #57684C;
+    --caramel-brown: #A2795B;
+    --matcha-green: #9BB079;
+    --golden-dough: #DFAD79;
+    --deep-chocolate: #3B2516;
+    --pure-white: #FFFFFF;
+}

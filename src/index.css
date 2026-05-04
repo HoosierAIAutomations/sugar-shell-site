@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+:root {
+    --olive-green: #57684C;
+    --caramel-brown: #A2795B;
+    --matcha-green: #9BB079;
+    --golden-dough: #DFAD79;
+    --deep-chocolate: #3B2516;
+    --pure-white: #FFFFFF;
+    --background: #FAFAF7; /* A very warm off-white */
+    --surface: #FFFFFF;
+    --text-color: var(--deep-chocolate);
+    --border-radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--background);
+    color: var(--text-color);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Base button styles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: var(--olive-green);
+    color: var(--pure-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--matcha-green);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(87, 104, 76, 0.3);
+}
+
+.btn-secondary {
+    background-color: var(--golden-dough);
+    color: var(--deep-chocolate);
+}
+
+.btn-secondary:hover {
+    background-color: var(--caramel-brown);
+    color: var(--pure-white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(162, 121, 91, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Utility */
+.text-center { text-align: center; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 2rem; }

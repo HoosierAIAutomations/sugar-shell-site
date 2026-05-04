@@ -1,0 +1,131 @@
+.contact-page {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.contact-header {
+  margin-bottom: 4rem;
+}
+
+.contact-header h1 {
+  font-size: 3rem;
+  color: var(--olive-green);
+  margin-bottom: 1rem;
+}
+
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+@media (min-width: 768px) {
+  .contact-content {
+    flex-direction: row;
+  }
+  .contact-content > * {
+    flex: 1;
+  }
+}
+
+.contact-info h2, .contact-form-container h2 {
+  color: var(--caramel-brown);
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.info-icon {
+  color: var(--olive-green);
+  background-color: rgba(87, 104, 76, 0.1);
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+}
+
+.info-item h3 {
+  color: var(--deep-chocolate);
+  margin-bottom: 0.25rem;
+}
+
+.sub-text {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.social-links {
+  margin-top: 3rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  background-color: var(--golden-dough);
+  color: var(--deep-chocolate);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.social-icons a:hover {
+  background-color: var(--caramel-brown);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.contact-form-container {
+  background-color: var(--surface);
+  padding: 3rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--deep-chocolate);
+}
+
+.form-group input, .form-group textarea {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: 'Outfit', sans-serif;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: var(--olive-green);
+}
+
+.contact-form button {
+  align-self: flex-start;
+  margin-top: 1rem;
+}

@@ -8,6 +8,7 @@ import Contact from './pages/Contact';
 import Success from './pages/Success';
 import './App.css'; // Just keeping for any legacy Vite styles, though we use index.css
 import { isOrderingOpen } from './utils/timeCheck';
+import sfscImage from './assets/SFSC.jpg';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -129,6 +130,9 @@ function App() {
             <p>&copy; {new Date().getFullYear()} Sugar Shell Bakehouse. All rights reserved.</p>
             <p>Bedford, IN & Surrounding Areas</p>
             <p className="health-notice">Made in a home kitchen not inspected by the Department of Health</p>
+            <p className="certification-link">
+              <a href={sfscImage} target="_blank" rel="noopener noreferrer">2026 StateFoodSafety Certification</a>
+            </p>
           </div>
         </footer>
       </div>

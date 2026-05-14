@@ -1,14 +1,24 @@
 import React, { useState } from 'react';
 import { PRODUCTS } from '../data/menu';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, Settings2 } from 'lucide-react';
+import BrownieBitesModal from '../components/BrownieBitesModal';
 import './Menu.css';
 
 const Menu = ({ addToCart, orderingOpen }) => {
   const [filter, setFilter] = useState('all');
+  const [customizeProduct, setCustomizeProduct] = useState(null);
 
   const filteredProducts = filter === 'all' 
     ? PRODUCTS 
     : PRODUCTS.filter(p => p.category === filter);
+
+  const handleCardAction = (product) => {
+    if (product.customizable) {
+      setCustomizeProduct(product);
+    } else {
+      addToCart(product);
+    }
+  };
 
   return (
     <div className="menu-page container">
@@ -45,21 +55,29 @@ const Menu = ({ addToCart, orderingOpen }) => {
               className="product-image" 
               style={{ backgroundImage: `url(${product.image})` }}
             >
-              <div className="product-size">{product.size}</div>
+              {product.size && <div className="product-size">{product.size}</div>}
+              {product.customizable && (
+                <div className="product-customizable-badge">Customizable</div>
+              )}
             </div>
             <div className="product-info">
               <h3>{product.name}</h3>
               {product.quantityInfo && <p className="product-quantity">{product.quantityInfo}</p>}
               <p className="product-desc">{product.description}</p>
               <div className="product-footer">
-                <span className="product-price">${product.price.toFixed(2)}</span>
+                <span className="product-price">
+                  ${product.price.toFixed(2)}
+                  {product.customizable && (
+                    <span className="product-price-note"> + pairings</span>
+                  )}
+                </span>
                 <button 
                   className="btn btn-primary add-to-cart-btn"
-                  onClick={() => addToCart(product)}
+                  onClick={() => handleCardAction(product)}
                   disabled={!orderingOpen}
                 >
-                  <ShoppingCart size={18} />
-                  {orderingOpen ? 'Add to Cart' : 'Closed'}
+                  {product.customizable ? <Settings2 size={18} /> : <ShoppingCart size={18} />}
+                  {!orderingOpen ? 'Closed' : product.customizable ? 'Customize' : 'Add to Cart'}
                 </button>
               </div>
               {product.ingredients && (
@@ -72,6 +90,15 @@ const Menu = ({ addToCart, orderingOpen }) => {
           </div>
         ))}
       </div>
+
+      {customizeProduct && (
+        <BrownieBitesModal
+          product={customizeProduct}
+          onClose={() => setCustomizeProduct(null)}
+          onAddToCart={addToCart}
+          orderingOpen={orderingOpen}
+        />
+      )}
     </div>
   );
 };

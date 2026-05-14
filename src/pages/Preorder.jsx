@@ -82,6 +82,16 @@ const Preorder = ({ cart, updateQuantity, removeFromCart, orderingOpen, isOrderi
                 <div className="cart-item-details">
                   <h3>{item.name}</h3>
                   <p className="cart-item-price">${item.price.toFixed(2)} each</p>
+                  {item.pairings && item.pairings.length > 0 && (
+                    <ul className="cart-item-pairings">
+                      {item.pairings.map((p, i) => (
+                        <li key={i}>
+                          <span className="pairing-label">#{i + 1}:</span>{' '}
+                          {p.drizzle}{p.drizzle !== 'No Drizzle' || p.topping !== 'No Topping' ? ' · ' : ''}{p.topping !== 'No Topping' ? p.topping : ''}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
                 <div className="cart-item-actions">
                   <div className="quantity-controls">

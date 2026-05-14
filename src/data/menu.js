@@ -3,8 +3,40 @@ import darkDream from '../assets/products/darkchocolatedreamcookies.png';
 import pbBlossoms from '../assets/products/peanutbutterblossomcookies.png';
 import doublePb from '../assets/products/doublepeanutbutterchocolatechipcookies.png';
 import brownies from '../assets/products/doublechocolatechipbrownies.png';
+import brownieBitesBox from '../assets/products/Brownie Bites Box.png';
+
+export const DRIZZLE_OPTIONS = [
+    { id: 'no-drizzle', label: 'No Drizzle', price: 0 },
+    { id: 'chocolate-ganache', label: 'Chocolate Ganache', price: 1 },
+    { id: 'biscoff', label: 'Biscoff', price: 1 },
+    { id: 'nutella', label: 'Nutella', price: 1 },
+    { id: 'peanut-butter', label: 'Peanut Butter', price: 1 },
+];
+
+export const TOPPING_OPTIONS = [
+    { id: 'no-topping', label: 'No Topping', price: 0 },
+    { id: 'mini-mms', label: 'Mini M&Ms', price: 1 },
+    { id: 'crushed-oreos', label: 'Crushed Oreos', price: 1 },
+    { id: 'crushed-peanuts', label: 'Crushed Peanuts', price: 1 },
+    { id: 'crushed-pretzels', label: 'Crushed Pretzels', price: 1 },
+    { id: 'mini-choc-chips', label: 'Mini Chocolate Chips', price: 1 },
+    { id: 'freeze-dried-strawberries', label: 'Crushed Freeze-Dried Strawberries', price: 1 },
+];
 
 export const PRODUCTS = [
+    {
+        id: 'brownie-bites-box',
+        name: 'Brownie Bites Box',
+        quantityInfo: '(box of brownie bites)',
+        category: 'brownie',
+        price: 10.00,
+        description: 'A box of rich, fudgy brownie bites made to share — or not. Customize with up to 3 drizzle & topping pairings for $1 each.',
+        ingredients: 'salt, granulated sugar, eggs, vanilla, vegetable oil, cocoa powder, flour, corn starch, semi-sweet chocolate chips.',
+        image: brownieBitesBox,
+        customizable: true,
+        maxPairings: 3,
+        pairingAddonPrice: 1.00,
+    },
     {
         id: 'dark-chocolate-dream',
         name: 'Dark Chocolate Dream',

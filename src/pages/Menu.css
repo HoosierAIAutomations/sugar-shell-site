@@ -77,6 +77,27 @@
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
+.product-customizable-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: linear-gradient(135deg, var(--golden-dough), var(--caramel-brown));
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 8px rgba(162, 121, 91, 0.4);
+}
+
+.product-price-note {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--caramel-brown);
+  margin-left: 0.2rem;
+}
+
 .product-info {
   padding: 1.5rem;
   display: flex;

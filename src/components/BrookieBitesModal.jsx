@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { X, Plus, Trash2, ShoppingCart } from 'lucide-react';
 import { DRIZZLE_OPTIONS, TOPPING_OPTIONS } from '../data/menu';
-import './BrownieBitesModal.css';
+import './BrookieBitesModal.css';
 
 const DEFAULT_PAIRING = { drizzle: 'no-drizzle', topping: 'no-topping' };
 
-const BrownieBitesModal = ({ product, onClose, onAddToCart, orderingOpen }) => {
+const BrookieBitesModal = ({ product, onClose, onAddToCart, orderingOpen }) => {
     const [pairings, setPairings] = useState([{ ...DEFAULT_PAIRING }]);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const images = [product.image, product.toppingImage].filter(Boolean);
-
-
 
     const addPairing = () => {
         if (pairings.length < product.maxPairings) {
@@ -26,9 +24,6 @@ const BrownieBitesModal = ({ product, onClose, onAddToCart, orderingOpen }) => {
         setPairings(prev => prev.map((p, i) => i === index ? { ...p, [field]: value } : p));
     };
 
-    // Deduplicate: a pairing that is "no drizzle + no topping" costs $0 and is effectively free
-    // Each non-free selection costs the pairingAddonPrice
-    // Re-interpret: each PAIRING SLOT beyond the free base costs the addon price if it has any non-"no" selection
     const pairingAddonCount = pairings.filter(
         p => p.drizzle !== 'no-drizzle' || p.topping !== 'no-topping'
     ).length;
@@ -38,7 +33,6 @@ const BrownieBitesModal = ({ product, onClose, onAddToCart, orderingOpen }) => {
     const handleAddToCart = () => {
         const cartItem = {
             ...product,
-            // Unique cart ID per configuration
             id: `${product.id}--${pairings.map(p => `${p.drizzle}:${p.topping}`).join('|')}`,
             price: totalPrice,
             pairings: pairings.map(p => ({
@@ -163,4 +157,4 @@ const BrownieBitesModal = ({ product, onClose, onAddToCart, orderingOpen }) => {
     );
 };
 
-export default BrownieBitesModal;
+export default BrookieBitesModal;

@@ -7,8 +7,6 @@ const DEFAULT_PAIRING = { drizzle: 'no-drizzle', topping: 'no-topping' };
 
 const BrownieBitesModal = ({ product, onClose, onAddToCart, orderingOpen }) => {
     const [pairings, setPairings] = useState([{ ...DEFAULT_PAIRING }]);
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const images = [product.image, product.toppingImage].filter(Boolean);
 
 
 
@@ -61,19 +59,8 @@ const BrownieBitesModal = ({ product, onClose, onAddToCart, orderingOpen }) => {
                     <div className="modal-img-wrapper">
                         <div
                             className="modal-product-img"
-                            style={{ backgroundImage: `url(${images[currentImageIndex]})` }}
+                            style={{ backgroundImage: `url(${product.image})` }}
                         />
-                        {images.length > 1 && (
-                            <div className="carousel-dots">
-                                {images.map((_, index) => (
-                                    <span 
-                                        key={index} 
-                                        className={`dot ${index === currentImageIndex ? 'active' : ''}`}
-                                        onClick={() => setCurrentImageIndex(index)}
-                                    />
-                                ))}
-                            </div>
-                        )}
                     </div>
                     <div className="modal-product-info">
                         <h2>{product.name}</h2>

@@ -29,7 +29,7 @@ export const TOPPING_OPTIONS = [
 export const PRODUCTS = [
     {
         id: 'brownie-bites-box',
-        name: 'Brownie Bites Box',
+        name: 'Mini Brownie Bites Box',
         quantityInfo: '(box of brownie bites)',
         category: 'brownie',
         description: '1/4 of a full brownie slab, topped your way or enjoyed plain',
@@ -44,7 +44,7 @@ export const PRODUCTS = [
     },
     {
         id: 'brookie-bites-box',
-        name: 'Brookie Bites Box',
+        name: 'Mini Brookie Bites Box',
         quantityInfo: '(box of brookie bites)',
         category: 'brownie',
         description: '1/4 of a full brownie slab, topped your way or enjoyed plain',

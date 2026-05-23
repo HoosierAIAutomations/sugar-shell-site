@@ -119,6 +119,38 @@
     animation: fadeIn 0.3s ease;
 }
 
+.pickup-disclaimer {
+    background-color: rgba(162, 121, 91, 0.04);
+    border-left: 4px solid var(--caramel-brown);
+    padding: 1.25rem 1.5rem;
+    border-radius: 4px;
+    margin-top: 2.5rem;
+    text-align: left;
+    font-size: 0.88rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.pickup-disclaimer h4 {
+    color: var(--caramel-brown);
+    font-family: 'Outfit', sans-serif;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+}
+
+.pickup-disclaimer p {
+    margin: 0;
+    margin-bottom: 0.75rem;
+}
+
+.pickup-disclaimer p:last-child {
+    margin-bottom: 0;
+}
+
 @media (max-width: 600px) {
     .pickup-info-container {
         padding: 1.5rem;

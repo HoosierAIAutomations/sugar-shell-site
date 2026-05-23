@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { CheckCircle, MapPin, Clock, Send } from 'lucide-react';
+import { CheckCircle, MapPin, Send } from 'lucide-react';
 import './Success.css';
 
 const Success = () => {
@@ -15,7 +15,7 @@ const Success = () => {
   const [submitted, setSubmitted] = useState(false);
 
   const slots = [
-    '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM'
+    '12:00 PM', '5:00 PM'
   ];
 
   // Automatic notification on load
@@ -110,7 +110,10 @@ Delivery Type: ${type}`);
             </div>
             <div className="address-details">
               <h3>Pickup Location</h3>
-              <p>2502 Rockport Rd Lot 10, Bedford, IN 47421</p>
+              <p>
+                Thornton Park<br />
+                1625 Q St. Bedford, IN
+              </p>
             </div>
           </div>
 
@@ -150,6 +153,13 @@ Delivery Type: ${type}`);
                 <span>Pickup time confirmed for {selectedSlot}! See you then.</span>
               </div>
             )}
+          </div>
+
+          <div className="pickup-disclaimer">
+            <h4>Pick up disclaimer</h4>
+            <p>By placing an order, you agree to pick up your items at the selected pickup time. A grace period of 30 minutes will be provided after your scheduled pickup time. Orders not picked up within 30 minutes of the selected pickup time will be considered abandoned.</p>
+            <p>Due to the perishable nature of our products and scheduling limitations, any order not picked up within the 30-minute grace period will be forfeited. No refunds, credits, replacements, or exchanges will be provided for unclaimed orders.</p>
+            <p>Please ensure you select a pickup time that works best for your schedule and contact us in advance if an emergency may prevent timely pickup.</p>
           </div>
         </div>
       )}

@@ -7,9 +7,13 @@ import miniBrownieBitesBox from '../assets/products/Mini Brownie Bites Box.png';
 import miniBrookieBitesBox from '../assets/products/Mini Brookie Bites Box.png';
 import miniBrownieToppings from '../assets/products/Mini Brownie Bites Box (2nd Photo Slide Over).png';
 import miniBrookieToppings from '../assets/products/Mini Brookie Bites Box (2nd Photo Slide Over).png';
+import cookieMonsterMain from '../assets/products/The Cookie Monster (main menu picture).png';
+import cookieMonsterInside from '../assets/products/The Cookie Monster (middle menu picture).png';
+
 
 export const DRIZZLE_OPTIONS = [
     { id: 'no-drizzle', label: 'No Drizzle', price: 0 },
+    { id: 'chocolate-drizzle', label: 'Chocolate Drizzle', price: 0.50 },
     { id: 'chocolate-ganache', label: 'Chocolate Ganache', price: 0.50 },
     { id: 'biscoff', label: 'Biscoff', price: 0.50 },
     { id: 'nutella', label: 'Nutella', price: 0.50 },
@@ -56,6 +60,19 @@ export const PRODUCTS = [
         customizable: true,
         maxPairings: 3,
         pairingAddonPrice: 0.50,
+    },
+    {
+        id: 'cookie-monster',
+        name: 'The Cookie Monster',
+        quantityInfo: '(one 4oz. cookie)',
+        category: 'cookie',
+        price: 4.00,
+        size: '4oz',
+        description: 'The cookie monster is a 4oz jumbo cookie stuffed full of white and semi-sweet chocolate chips, crushed oreos, chips ahoy, finished off with a full sized oreo in the center!',
+        ingredients: 'butter, granulated sugar, brown sugar, egg, vanilla extract, blue food coloring, white flour, baking powder, baking soda, salt, semi-sweet chocolate chips, white chocolate chips, chips ahoy, oreos',
+        image: cookieMonsterMain,
+        images: [cookieMonsterMain, cookieMonsterInside],
+        imageInterval: 2000
     },
     {
         id: 'dark-chocolate-dream',

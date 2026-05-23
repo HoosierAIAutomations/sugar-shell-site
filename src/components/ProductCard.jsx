@@ -10,9 +10,9 @@ const ProductCard = ({ product, onAction, orderingOpen }) => {
         if (images.length <= 1) return;
         const interval = setInterval(() => {
             setCurrentImageIndex(prev => (prev + 1) % images.length);
-        }, 4000);
+        }, product.imageInterval || 4000);
         return () => clearInterval(interval);
-    }, [images.length]);
+    }, [images.length, product.imageInterval]);
 
     return (
         <div className="product-card animate-fade-in">
